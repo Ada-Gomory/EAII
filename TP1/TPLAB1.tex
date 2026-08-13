@@ -1,0 +1,621 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{naturalnames}{hyperref}
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{chngcntr}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{graphicx} 
+\usepackage{tabularx}
+\usepackage[font=footnotesize,labelfont=bf]{caption}
+
+%\usepackage{csquotes}
+%\usepackage[spanish, english]{babel}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{helvet}
+
+\usepackage{authblk}
+
+\usepackage{layout}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{float} 
+
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[final]{pdfpages}
+\usepackage{pstricks}
+
+\usepackage{soul}
+\usepackage{titlesec}
+\usepackage{ulem}
+\usepackage{url}
+
+\usepackage{dsfont}
+\usepackage{array}
+
+\usepackage{standalone}
+
+\usepackage{wrapfig}
+\usepackage{fancyhdr}
+\usepackage[lastpage,user]{zref}
+
+\usepackage{authblk}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{lineno} 
+
+\usepackage{tikz}
+\usetikzlibrary{math}
+
+\definecolor{myblue}{rgb}{0,0.1,0.5}
+\definecolor{blueplot}{rgb}{0,0,1}
+\definecolor{redplot}{rgb}{0.84,0.15,0.16}
+\definecolor{greenplot}{rgb}{0,0.5,0}
+
+%%%%%%%%%%%%%%%%
+\usepackage[compatibility,siunitx,  americanvoltages, americancurrents, americanresistors, europeaninductors, americanports, straightlabels, fetbodydiode, straightvoltages]{circuitikz}
+\usepackage{tikz,amsmath, amssymb,bm,color,pgfkeys,siunitx,ifthen,ulem}
+\usepackage{pgfplots}
+
+\input{latex_ext}
+
+\usetikzlibrary{backgrounds,calc,positioning}
+
+\usetikzlibrary{circuits.ee.IEC}
+\usetikzlibrary{arrows}
+
+\definecolor{netlabelcolor}{rgb}{0, 0, 0.25}
+\definecolor{lttotitextcolor}{rgb}{0, 0.4, 0.25}
+\definecolor{lttotidrawcolor}{rgb}{0.6, 0.6, 0.6}
+\definecolor{netcolor}{rgb}{0, 0, 0.5}
+
+\pgfkeys{/lt2ti/netlabel/font/.initial= \small}
+\pgfkeys{/lt2ti/text/font/.initial= \small}
+
+\pgfkeys{/lt2ti/Net/.style= {netcolor}}
+\tikzstyle{dashdotdotted}=[dash pattern=on 3pt off 2pt on \the\pgflinewidth off 2pt on \the\pgflinewidth off 2pt]
+
+\pgfkeys{/lt2ti/VArrow/.style= {->,>=latex}}
+\pgfkeys{/lt2ti/SArrow/.style= {->,>=angle 90}}
+%%%%%%%%%%%%%%%%
+\pgfplotsset{compat=1.18}
+
+%%%%%%%%%%%%%%%%
+
+\definecolor{headerblue}{RGB}{180,198,231}
+\definecolor{rowgray}{RGB}{217,217,217}
+%%%%%%%%%%%%%%%%
+
+
+\usepackage[style=numeric,sorting=none]{biblatex} %Imports biblatex package
+\addbibresource{references.bib} %Import the bibliography file
+
+\hypersetup{ 
+colorlinks=true,
+breaklinks=true, 
+urlcolor=myblue,
+linkcolor=black,
+citecolor=myblue,
+pdfauthor={Ada Gomory}
+}
+
+\usepackage{varwidth}
+\DeclareCaptionFormat{myformat}{
+  \begin{varwidth}{\linewidth}
+    \centering
+    #1#2#3
+  \end{varwidth}
+}
+
+\newcommand{\parallelsum}{\mathbin{\!/\mkern-5mu/\!}}
+
+\graphicspath{{./Pictures/}}
+
+\author{}
+\date{28 de Mayo, 2026}
+
+\begin{document}
+\includepdf[pages={1}]{caratula.pdf}
+
+%\title{Electrónica Aplicada 2}
+%\renewcommand{\thefootnote}{\arabic{footnote}}
+
+%\maketitle
+
+\section{Armado del Circuito (1)}
+
+\begin{figure}[h!] 
+\centering
+\includegraphics[width=7cm]{Fotos/Circuito1}
+\includegraphics[width=7cm]{Fotos/Circuito2}
+\caption{Circuito armado}
+\end{figure}
+
+\section{Calculos Teoricos (2)}
+\subsection{Calculos Continua} \label{sec:calccc}
+
+Se calcula el punto de trabajo del circuito de continua (fig \ref{fig:scheCont}), los mismo se vuelvan en la tabla comparativa (tab \ref{tab:cc})
+
+\begin{figure}[h!]
+    \centering
+    \includestandalone[width=11cm]{CircCont}
+    \caption{Circuito de Continua}
+    \label{fig:scheCont}
+\end{figure}
+
+\begin{equation}
+V_{R_{E3}} = V_{e_3} - V_{ee} = V_{BE_4} = 0.65V
+\end{equation}
+\begin{equation}
+V_{e_3} = V_{ee} + V_{BE_4} = -8.35
+\end{equation}
+\begin{equation}
+I_{CQ_3} = I_{R_{E3}} = \frac{V_{R_{E3}}}{R_{E3}} = 1.97mA
+\end{equation}
+\begin{equation}
+I_{CQ_1} = I_{CQ_2} = \frac{I_{CQ_3}}{2} = 0.98 mA
+\end{equation}
+\begin{equation}
+V_{CEQ_4} = V_{BE_3} + V_{BE_4}  = 1.35V
+\end{equation}
+\begin{equation}
+-V_{c4} = V_{ee} + V_{CEQ_4} = -7.64
+\end{equation}
+\begin{equation}
+I_{CQ_4} \approx I_{R_{B3}} = \frac{-V_{c4}}{R_{B3}} = -\frac{V_{ee} + V_{CEQ_4}}{R_{B3}} = 2.31mA
+\end{equation} 
+\begin{equation}
+V_{b1} = I_{B_1} R_in \approx 0V
+\end{equation}
+\begin{equation}
+V_{BE_1} = V_{BE_2} = 0.75V
+\end{equation}
+\begin{equation}
+V_e = -V_{b1} - V_{BE_1} = -0.75
+\end{equation}
+\begin{equation}
+V_{b2} = V_e + V_{BE_1} \approx 0V
+\end{equation}
+\begin{equation}
+V_{c1} = V_{cc} - V_{R_C1} = V_{cc} - R_{C_1} I_{CQ_1} = 8.333V
+\end{equation}
+\begin{equation}
+V_{c2} = V_{cc} - V_{R_C2} = V_{cc} - R_{C_2} I_{CQ_2} = 8.333V
+\end{equation}
+\begin{equation}
+V_{CEQ_1} = V_{c1} - V_{e} = 9.08V
+\end{equation}
+\begin{equation}
+V_{CEQ_2} = V_{c2} - V_{e} = 9.08V
+\end{equation}
+\begin{equation}
+V_{CEQ_3} = V_{e} - V_{e3} = 7.6V
+\end{equation}
+\begin{equation}
+V_o = V_{b2} + V_{R_2} = V_{b2} + I_{B2} R_2 \approx 0V
+\end{equation}
+\begin{equation}
+V_{c5} = V_o + V_{BE_6} = 0.(65V)
+\end{equation}
+\begin{equation}
+I_{CQ_5} \approx -I_{R_{C_5}} = -\frac{V_{c5} - V_{ee}}{R_{C_5}} = -0.97mA
+\end{equation}  
+\begin{equation}
+V_{CEQ_5} = V_{c5} - V_{cc} = -8.35V
+\end{equation}
+\begin{equation}
+I_{CQ_6} = I_{R_{E_6}} = \frac{V_o - V_{ee}}{R_{E_6}} = 0.9mA
+\end{equation} 
+\begin{equation}
+V_{CEQ_6} = V_{cc} - V_{o} = 9V
+\end{equation}
+
+\subsection{Circuito de Señal y Metodo Receta}
+
+A 2mA obtenemos para ambos tipos de transistores
+\begin{equation}
+hie = 4.5K; hfe=330; hoe=30\mu
+\end{equation}
+
+De los graficos obtenemos los obtenemos los fc
+
+\begin{table}
+\centering
+\begin{tabular}{ |c|c|c|c|c| }\hline
+Transistor         & \(\approx I_{CQ}\)[mA] & \(fc_{h_{ie}}\) & \(fc_{h_{ie}}\) & \(fc_{h_{ie}}\) \\\hline
+\(Q_5           \) & -1                     & 1.8             & 0.97            & 0.5             \\\hline
+\(Q_1, Q_2, Q_4 \) &  1                     & 2               & 0.95            & 0.6             \\\hline
+\(Q_3, Q_4      \) &  2                     & 1               & 1               & 1               \\\hline
+\end{tabular}
+\caption{Factores de correccion \(\frac{h_e(I_c)}{h_e(2mA)}\)}
+\label{tab:fc} 
+\end{table}
+
+Obteniendo asi los paramtros \(h_e\)
+
+\begin{table}
+\centering
+\begin{tabular}{ |c|c|c|c| }\hline
+Transistor         & \(h_{ie}\) [\(K\Omega\)] & \(h_{fe}\) & \(h_{oe}\) [\(\mu S\)] \\\hline
+\(Q_5           \) & 8.17                     & 320        & 15                     \\\hline
+\(Q_1, Q_2, Q_4 \) & 9                        & 313        & 18                     \\\hline
+\(Q_3, Q_4      \) & 4.5                      & 330        & 30                     \\\hline
+\end{tabular}
+\caption{Parametros \(h_e\)}
+\label{tab:he} 
+\end{table}
+
+\subsubsection{Planteo Thevenin e Identifico Topologia de Red}
+
+\begin{figure}[!h]
+    \centering
+    \includestandalone[width=11cm]{CircBasico}
+    \caption{Circuito Original}
+\end{figure}
+
+La realimentacion Muestrea tension y reinyecta tension, por lo que la topologia es Tension-Serie
+
+Podemos verificar la realimentacion negativa dado \( V_i = V_s - V_f \)
+
+\begin{equation}
+{R_{th}} = 50 \Omega \parallelsum 47K\Omega \approx 50 \Omega
+\end{equation}
+
+\subsubsection{\texorpdfstring{Parametros de  Red \(\beta\)}{Parametros de Red }}
+
+\begin{figure}[h!]
+    \centering
+    \includestandalone[width=5cm]{Beta}
+    \caption{Cuadripolo de la Malla \(\beta\)}
+\end{figure}
+
+\begin{equation}
+h_{11} = \left. \frac{V_1}{I_1} \right\vert_{V_2 = 0} = R_2 \parallelsum R_1 = 4.27 K\Omega 
+\end{equation}
+\begin{equation}
+h_{12} = \left. \frac{V_1}{V_2} \right\vert_{I_1 = 0} = \frac{R_1}{R_1 + R_2} = 90.91 \cdot 10^{-3} 
+\end{equation}
+\begin{equation}
+h_{22} = \left. \frac{I_2}{V_2} \right\vert_{I_1 = 0} = \frac{1}{R_1 + R_2} = (51.7 K\Omega)^{-1} 
+\end{equation}
+
+\subsubsection{Armado del NAB}
+
+\begin{figure}[h!]
+    \centering
+    \includestandalone[width=11cm]{NAB}
+    \caption{Nuevo Amplificador Basico}
+\end{figure}
+
+\begin{equation}
+R_{is} = R_s + 2 h_{ie_{12}} + h_{11} 
+\end{equation}
+\begin{equation}
+h_{ie_{12}} = 9K\Omega
+\end{equation}
+\begin{equation}
+h_{fe_{12}} = 313
+\end{equation}
+\begin{equation}
+R_{is} = R_s + 2 h_{ie} + h_11 = 50\Omega + 2 \cdot 9K\Omega + 4.27 K\Omega  = 22.27K\Omega 
+\end{equation}
+\begin{equation}
+R_{os} = R_L \parallelsum R_{E6} \parallelsum \frac{1}{h_{22}} \parallelsum R_{O_{Q6}}
+\end{equation}
+\begin{equation}
+h_{oe_{5}} 15 \mu S
+\end{equation}
+\begin{equation}
+R_{O_{Q5}} = \frac{1}{15 \mu S} = 66.66K\Omega
+\end{equation}
+\begin{equation}
+R_{O_{Q6}} = \frac{h_{ie_{6}}}{h_{fe_{6}}} + \frac{R_{C5} \parallelsum R_{O_{Q6}}}{1 + h_{fe_{6}}} = \frac{9K\Omega}{314} + \frac{10K\Omega \parallelsum 66.6K\Omega}{314} = 56.35\Omega
+\end{equation}
+\begin{equation}
+R_{os} = 47K\Omega \parallelsum 10K\Omega \parallelsum 51.7K\Omega \parallelsum 56.35\Omega \approx 56.35\Omega
+\end{equation}
+\par
+\begin{equation}
+A_{vs} = \frac{V_O}{V_S} = \frac{V_O}{V_X} \cdot \frac{V_X}{V_Y} \cdot \frac{V_Y}{V_S} 
+\end{equation}
+\begin{equation}
+\frac{V_O}{V_X} = \frac{ \left( 1 + h_{fe_{6}} \right) \left( R_{e6} \parallelsum R_L \parallelsum \frac{1}{h_{22}} \right)}{h_{ie_{6}} + \left( 1 + h_{fe_{6}} \right) \cdot \left( R_{e6} \parallelsum R{L} \parallelsum \frac{1}{h_{22}} \right)} = \frac{ 314 \cdot 7.111K\Omega}{9K\Omega + 314 \cdot 7.111K\Omega} \approx 1 
+\end{equation}
+\begin{equation}
+\frac{V_X}{V_Y} = -gm_5 \left( R_{c5} \parallelsum R_{iQ6} \right) \approx -40V^{-1} \cdot 0.97mA \cdot 10K\Omega = -388
+\end{equation}
+\begin{equation}
+\frac{V_Y}{V_S} = 
+\frac{-h_{fe_{1}} \left( R_{C1} \parallelsum R_{is} \parallelsum R_{O_{Q1}} \right) }{R_s + 2 h_{ie_{1}} + h_{11}} = 
+\frac{-313 \left( 680\Omega \parallelsum 9K\Omega \Omega \right)}{50\Omega + 2 \cdot 9K\Omega + 4.27K\Omega} = -8.86 
+\end{equation}
+\begin{equation}
+A_{vs} = 0.65 \cdot (-388) \cdot (-9.45) = 3440
+\end{equation}
+
+\subsubsection{Calculo de los Parametros Realimentados y Fin del Metodo Receta}\label{sec:CalcXvsf}
+
+Se calculan a continuacion los parametros \(A_{vsf}\), \(R_{isf}\) y \(R_{osf}\), los mismos se vuelcan en la tabla comparativa (tab \ref{tab:xsf}).
+
+\begin{equation}
+D = 1 + (A_{vs} \cdot \beta) = 313.7
+\end{equation}
+\begin{equation}
+A_{vsf} = \frac{A_{vs}}{D} = 10.96
+\end{equation}
+\begin{equation}
+R_{isf} = R_{is} \cdot D = 6.98M\Omega; R_{in} \parallelsum R_{isf} \approx R_{in} 
+\end{equation}
+\begin{equation}
+R_{osf} = \frac{R_{os}}{D} = 0.17\Omega
+\end{equation}
+
+\newpage
+
+\newpage
+\section{Simulaciones}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=11cm]{Sche/Gen.png}
+\caption{Esquematico Utilizado para la simulacaion de continua, \(A_{vsf}\) y \(R_{isf}\), variaciones de \(C_c\)}
+\label{fig:scheGen}
+\end{figure}
+
+\begin{figure}[h!] 
+\centering
+\includegraphics[width=11cm]{Sche/Ros.png}
+\caption{Esquematico Utilizado para la simulacaion de \(R_{osf}\)}
+\label{fig:scheRo}
+\end{figure}
+
+\subsection{Punto de operacion en continua (3)} \label{sec:simcc}
+Se tomaron las medidas del punto de operacion utilizando la intruccion .op, las mismas se encuentran en la tabla (tab \ref{tab:cc}) comparativa de valores. 
+
+\subsection{\texorpdfstring{\(A_{vsf}\), \(R_{isf}\) y \(R_{osf}\) (4)}{, y (4)}} \label{sec:SimXvsf}
+
+\begin{figure}[ht] 
+\centering
+\includegraphics[width=9cm]{Plot/Avsf.png} \\
+\includegraphics[width=9cm]{Plot/RisfPlot.png} \\
+\includegraphics[width=9cm]{Plot/RosfPlot.png}
+\caption{(de arriba hacia abajo) Plots de \(A_{vsf}\), \(R_{isf}\) y \(R_{osf}\)}
+\label{fig:.ac}
+\end{figure}
+
+Con la instruccion .ac se toman los plots de \(A_{vsf} (V(Vo)/V(Vin))\) y \(R_{isf} (V(Vin)/I(Vin))\) del esquematico original (fig \ref{fig:scheGen}), asi como el valor de \(R_{osf} (V(Vin)/I(V3))\) del esquematico modificado (fig \ref{fig:scheRo}), obteniendo los plots de estos parametros (fig \ref{fig:.ac}). Los valors se encuentran en la tabla comprativa (tab \ref{tab:xsf}).
+
+\subsection{Variaciones en el Capacitor de compensacion (10)} \label{sec:cc}
+
+\begin{figure}[ht] 
+\centering
+\includegraphics[width=9cm]{Plot/AvsfSinCC.png} \\
+\includegraphics[width=9cm]{Plot/AvsfCCParam.png} 
+\caption{(de arriba hacia abajo) Plot con el capacitor de compensacion removido, plot con el capacitor de compensacion parametrizado en 4.7pF, 22pF, 220pf y 1nf.}
+\label{fig:capsweep}
+\end{figure}
+
+Al remover el capacitor de compensacion puede observarse en los plots resultantes (fig \ref{fig:capsweep}) que aparece un gran sobrepico a altas frecuencias. Este se debe a un componente de realimentacion positiva que surje a estas frecuencias. Al agregar el capacitor se puede observar que el pico de sobreamplificacion se reduce y se mueve hacia las bajas frecuencias. Este efecto es mayor cuanto mayor es el valor del capacitor. Si el valor es demasiado elevado, empieza a recortarse el ancho de banda del amplificador. Los valores se vuelcan en la tabla (tab \ref{tab:cap})\\
+En el 
+
+
+\begin{table}
+\centering
+\begin{tabular}{ |c|c|c| } \hline
+Valor de \(C_c\) [pF] & \(\omega\) [KHz] & \(A(\omega)\) \\ \hline         
+0                     & 8689             & 332.25        \\ \hline 
+4.7                   & 5152             & 73.85         \\ \hline 
+22                    & 2739             & 35.30         \\ \hline 
+220                   & 674.5            & 12.83         \\ \hline 
+1000                  & 101.6            & 10.31         \\ \hline 
+\end{tabular}
+\caption {Parametros de operacion de Señal}
+\label{tab:cap} 
+\end{table}
+
+\subsection{\texorpdfstring{Variaciones en la Resistencia \(R_1\) (11)}{Variaciones en la Resistencia (11)}} \label{sec:simR1}
+
+\begin{figure}[ht] 
+\centering
+\includegraphics[width=11cm]{Plot/AvsfR1param.png}
+\caption{Plot con la resistencia \(R_1\) parametrizada en \(2.2K\Omega\), \(4.7K\Omega\), \(6.8K\Omega\), \(15K\Omega\) y \(22K\Omega\).}
+\label{fig:R1}
+\end{figure}
+
+Podemos aproximar la ganancia de la siguiente manera.
+
+\begin{equation}
+A_{vsf} = \frac{A_vs}{1 + A_{vs} \cdot \beta} \approx \frac{1}{\beta} = 1 + \frac{R_2}{R_1}
+\end{equation}
+
+De esta forma, podemos esperar que al reducir \(R_1\) aumente \(A_{vsf}\). En el plot obtenido de realizar esta variacion (fig \ref{fig:R1}) se puede comprobar este fenomeno. Los valores obtenidos de la simulacion y los calculados de esta forma se vuelcan la tabla (tab \ref{tab:R1})
+
+\newpage
+\section{Proceso de Medicion}
+Para la realizacion de las mediciones utilizamos un osiloscopio Siglent SDS 2204X y un generador de señales Twintex TFG-3205E y una Red Pitaya 125-14.
+
+\begin{figure}[ht] 
+\centering
+\includegraphics[width=11cm]{Fotos/Med}
+\caption{Banco de Mediciones}
+\end{figure}
+
+\subsection{Medicion del punto de polarizacion de los transistores (5), (6)} \label{sec:medcc}
+
+%\begin{figure}[ht] 
+%\centering
+%\includegraphics[width=11cm]{Fotos/CC}
+%\caption{Medicion del punto de trabajo}
+%\end{figure}
+
+Se midio el punto de trabajo de los transistores con tension de \({V_{CC} = 8.984}\), \({V_{EE} = -9.129}\) y \({V_{O} = 0,0078V}\). Los mismos se encuentran volcados en la tabla comparativa (tab \ref{tab:cc}). 
+
+
+\subsection{\texorpdfstring{Medicion de \(A_{vsf}\) (7)}{Medicion de  (7)}} \label{sec:MedAvsf}
+
+\begin{figure}[ht] 
+\centering
+\includegraphics[width=11cm]{Osci/Avsf}
+\caption{Oscilograma correspondiente a la medicion de \(A_{vsf}\)}
+\end{figure}
+
+Se aplico una \(V_s\) senoidal de 10KHz de frecuencia y 200mVpp, la ganancia obtenida es volcada en la tabla comparativa (tab \ref{tab:xsf}).
+
+\subsection{\texorpdfstring{Barrido de frecuencia y obtension de \(A_{vsf}(\omega)\) (8) y (9)}{Barrido de frecuencia y obtension de }}
+
+\begin{figure}[ht] 
+\centering
+\includegraphics[width=16cm]{Plot/AvsfMed}
+\caption{(arriba) \(A_{V_I}\) y \(A_{V_O}\) en barrido de frecuencia\\
+(abajo)  \(A_{vsf}\) en barrido de frecuencia, modulo y fase}
+\label{fig:barrido}
+\end{figure}
+
+Realizando un barrido de frecuencia desde 1Hz hasta 60MHz
+se obtuvo \(A_{vsf}(\omega)\). A frecuencias superiores a 10MHz se empieza a reducir la amplitud en el generador de señales. Como a esas frecuencias la tension de salida ya se encuentra por debajo del piso de ruido (Y por ende la tension de salida medida no puede bajar mas), se aparenta un aumento ficticio de la ganancia del amplificador. Puede observarse el polo en 10MHz y una variacio de -180° alrededor de la frecuencia del polo (fig \ref{fig:barrido})
+
+\subsection{Variacion de CC (10)}
+
+\begin{figure}[ht] 
+\centering
+\includegraphics[width=7cm]{Osci/AvsfCC4p7}
+\includegraphics[width=7cm]{Osci/AvsfCC22p} \\
+\includegraphics[width=7cm]{Osci/AvsfCC1n}
+\includegraphics[width=7cm]{Osci/AvsfSinCC}
+\caption{(De izquierda a derecha) Oscilogramas de \(V_o\) resultante de reemplazar el capacitor de compensacion de 220pF por (arriba): Un capacitor de 4.7pF, Un capacitor de 22pF, (abajo) Un capacitor de 1nF, Un circuito abierto} 
+\label{fig:medCC}
+\end{figure}
+
+Se vario el capcitor de compensacion de forma similar a la simulacion del inciso \ref{sec:cc}. Se observa que aparece un nivel de ruido prodeucto de la osilacion, el cual se reduce al aumentar el valor de \(C_c\). Em los oscilogramas resultantes (fig \ref{fig:medCC}) se puedo observar el aumento del nivel de ruido, aunque este se no es muy elevando un ninguna de las configuraciones.
+
+\subsection{Variacion de R1 (11)} \label{sec:medR1}
+
+\begin{figure}[ht] 
+\centering
+\includegraphics[width=5cm]{Osci/AvsfR1_6k8}
+\includegraphics[width=5cm]{Osci/AvsfR1_15k}
+\includegraphics[width=5cm]{Osci/AvsfR1_22k}
+\caption{(De izquierda a derecha) Oscilogramas de \(V_o\) resultante de reemplazar \(R_1\) de \(4.7K\Omega\) por recistencias de (De izquierda a derecha):  \(2.2K\Omega\), \(6.8K\Omega\), \(15K\Omega\) y \(22K\Omega\)}
+\label{fig:medR1}
+\end{figure}
+
+Se vario la resistencia \(R_1\) de forma similar a la simulacion del inciso \ref{sec:cc}. Se observa la variacion la ganancia \(A_{vsf}\), media de los oscilogramas (fig \ref{fig:medR1}). Los valores obtenidos se volcaron en la tabla comparativa (tab \ref{tab:R1}).
+
+\newpage
+\subsection{\texorpdfstring{Medicion de \(R_{in}\) (12)}{Medicion de  (12)}}\label{sec:MedRin}
+
+\begin{figure}[h!]
+    \centering
+    \includestandalone[width=11cm]{Rin}
+    \caption{Circuito de medicion de Rin}
+\label{fig:scheRin}
+\end{figure}
+
+
+\begin{figure}[!h] 
+\centering
+\includegraphics[width=11cm]{Fotos/Rin}
+\includegraphics[width=11cm]{Osci/Rin}
+\caption{Proceso de medicion de \(R_{in}\)}
+\end{figure}
+
+Para medir la \(R_{in}\) del circuito se conecto un potenciometro y voltimetro como se muestra en el esquematico (fig \ref{fig:scheRin}). Se ajusta el potenciometro hasta que la V medida se vuelve la mitad de la \(V_s\). A este punto se puede afirmar que \(R_{pot} = R_{in}\), el cual es posible medir. El valor obtenido se volco en la tabla comparativa (tab \ref{tab:xsf}).
+
+
+\newpage
+\section{Tablas Comparativas de Valores (13)} 
+A continuacion se vuelcan en las tablas comparativas los valores obtenidos en \ref{sec:calccc}, \ref{sec:simcc} y \ref{sec:medcc} (tab \ref{tab:cc}), \ref{sec:CalcXvsf}, \ref{sec:SimXvsf}, \ref{sec:MedAvsf} y \ref{sec:MedRin} (tab \ref{tab:xsf}) y \ref{sec:simR1} y \ref{sec:medR1} (tab \ref{tab:R1})
+
+\begin{table}
+\centering
+\begin{tabular}{ |c|c|c|c| } \hline
+Parametro       & Valor Calculado & Valor Simulado & Valor Medido \\ \hline         
+\(V_{CE_{Q1}}\) &    9,08 V       &   9,15V        &  9,156V      \\ \hline 
+\(V_{CE_{Q2}}\) &    9,08 V       &   9,02 V       &  8,851V      \\ \hline 
+\(V_{CE_{Q3}}\) &    7,6 V        &   7,57 V       &  7,628V      \\ \hline 
+\(V_{CE_{Q4}}\) &    1,35 V       &   1,32 V       &  1,308V      \\ \hline 
+\(V_{CE_{Q5}}\) &   -8,35 V       &  -8,33 V       & -8,295V      \\ \hline 
+\(V_{CE_{Q6}}\) &    9 V          &   8,97 V       &  8,892V      \\ \hline 
+\(I_{C_{Q1}}\)  &    0,98 mA      &   0,91 mA      &  0.908mA     \\ \hline 
+\(I_{C_{Q2}}\)  &    0,98 mA      &   1,09 mA      &  1,354mA     \\ \hline 
+\(I_{C_{Q3}}\)  &    1,97 mA      &   2 mA         &  2,001mA     \\ \hline 
+\(I_{C_{Q4}}\)  &    2.31mA       &   2,32 mA      &  2,396mA     \\ \hline 
+\(I_{C_{Q5}}\)  &   -0,97 mA      &  -0,97 mA      & -0,9827mA    \\ \hline 
+\(I_{C_{Q6}}\)  &    0,9 mA       &   0,9 mA       &  0,9207mA    \\ \hline 
+\end{tabular}
+\caption {Punto de operacion de continua}
+\label{tab:cc}
+\end{table}
+
+
+\begin{table}
+\centering
+\begin{tabular}{ |c|c|c|c| } \hline
+Parametro   & Valor Calculado & Valor Simulado    & Valor Medido      \\ \hline         
+\(A_{vsf}\) & \(10.95\)       & \(10.96\)         & \(10.849\)        \\ \hline 
+\(R_{isf}\) & \(47K\Omega\)   & \(46.47K\Omega\)  & \(44.84K\Omega\)  \\ \hline 
+\(R_{osf}\) & \(170m\Omega\)  & \(155m\Omega\)    &                   \\ \hline 
+\end{tabular}
+\caption {Parametros de operacion de Señal}
+\label{tab:xsf} 
+\end{table}
+
+\begin{table}
+\centering
+\begin{tabular}{ |c|c|c|c| } \hline
+\(R_1\) [\(K\Omega\)] & \(A_{vsf}\) Calculado & \(A_{vsf}\) Simulado & \(A_{vsf}\) Medido \\ \hline         
+2.2 & 22.36 & 22.19 & 21.438 \\ \hline 
+4.7 & 11    & 10.95 & 10.849 \\ \hline 
+6.8 & 7.91  & 7.88  & 7.310  \\ \hline 
+15  & 4.13  & 4.12  & 3.949  \\ \hline 
+22  & 3.13  & 3.13  & 3.196  \\ \hline 
+\end{tabular}
+\caption { \(A_{vsf}\) obtenido al variar \(R_1\)}
+\label{tab:R1} 
+\end{table}
+
+\newpage
+\section{Consideraciones Teoricas (14) y (15)}
+El esquema de amplificacion realimentada cuenta con multiples ventajas con respecto a un esquema de lazo abierto. La ganancia es mas estable frente a variaciones en el circuito debidas a la dispersion de los parametros de los transitores o valores de las resitencias, es mas estable frente a alinealidades que introduzcan ruido distorsivo y es mas estable frente a variaciones en la carga del circuito. Adicionalmente permite controlar el valor de ganancia con la variacion de un unico componente. La resistencia de entrada aumenta y la de salida se reduce, ambos efectos siendo generalmente deseables para un amplificador de tension. Todas estas ventajas, sin embargo son apareadas con una perdida significativa de la ganancia de tension respecto a del amplificador a lazo abierto.
+
+El parametro realimentado (En este caso, \(V_f\)) se encuentra siempre en oposicion al parametro de entrada (\(V_s\)). Por otro lado corriente de entrada del circuito depende de la resistencia a lazo abierto y del parametro realimentado (\(V_i\)). De esta forma, \(V_f\) redcuce \(V_i\) y por lo tanto \(I_e\) para una misma \(V_s\), aumentando la resistencia de entrada.
+
+\begin{equation}
+I_e = \frac{V_i}{R_{is}}
+\end{equation}
+\begin{equation}
+R_(isf) = \frac{V_s}{I_e}
+\end{equation}
+\begin{equation}
+I_e = \frac{V_s}{R_{isf}}
+\end{equation}
+
+\begin{equation}
+\frac{V_s}{R_{isf}} = \frac{V_s - V_f}{R_{is}}
+\label{eq:risf}
+\end{equation}
+
+Como puede observarse en (eq \ref{eq:risf}), por el efecto de \(V_f\), \(R_{isf}\) debera ser mayor a \(R_{is}\) para mantener la igualdad. Este se puede cuantificar de la siguiente manera:
+
+\begin{equation}
+\frac{R_{isf}}{R_{is}} = \frac{V_s}{V_i} = \frac{V_i + V_f}{V_i} =  \frac{V_i + A_v \beta V_i}{V_i} = 1 +A_v \beta
+\end{equation}
+\begin{equation}
+{R_{isf}} = D{R_{is}}
+\end{equation}
+
+Debido a que \(I_{b2}\) es muy pequeña (del orden de los microamperes) la caida de tension en \(R_2\) sera practimente nula, fijando la tension de continua \(V_o\). En termino de retroalimentacion, el \(\beta\) unitario genera una \(A_{vsf}\) unitaria, y al ser la \(V_s\) nula en continua, \(V_o\) resulta nula en continua. De esta forma el esquema de realimentacion tambies se utiliza en la determinacion del punto de trabajoi del circuito
+
+
+\normalem
+\end{document}
