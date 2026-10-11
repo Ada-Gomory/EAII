@@ -1,0 +1,89 @@
+\documentclass[12pt]{article}
+
+\usepackage[a4paper, left=2.2cm, right=2.2cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}      % Times, como el original
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\definecolor{grisclaro}{gray}{0.88}
+\definecolor{grismedio}{gray}{0.80}
+
+% Caja de un campo (ancho completo, borde simple)
+\newcommand{\campo}[2]{%
+  \fbox{\parbox[c][0.62cm][c]{15.6cm}{\hspace{0.1cm}\textbf{#1} #2}}\par\vspace{0.55cm}}
+
+\begin{document}
+
+% ---- Encabezado: logo + materia ----
+\begin{minipage}[t]{2.6cm}
+  \vspace{0pt}
+  \hspace{0.5cm}\includegraphics[width=1.8cm]{logo2-000.png}
+\end{minipage}%
+\begin{minipage}[t]{13.1cm}
+  \vspace{0pt}
+  \fcolorbox{black}{grisclaro}{\parbox[t][1.9cm][t]{12.9cm}{\centering\vspace{0.25cm}\textbf{ELECTRÓNICA APLICADA II}}}
+\end{minipage}
+
+\vspace{0.5cm}
+
+% ---- Grupo y Curso ----
+\hspace{2.6cm}%
+\fbox{\parbox[c][0.62cm][c]{6.35cm}{\hspace{0.1cm}\textbf{GRUPO N°\ \ 5}}}%
+\fbox{\parbox[c][0.62cm][c]{6.35cm}{\hspace{0.1cm}\textbf{CURSO:} R4051}}
+
+\vspace{0.55cm}
+
+% ---- Datos docentes y práctico ----
+\campo{PROFESOR:}{Pablo Andrés Gonzalez Galli}
+\campo{JTP:}{Eduardo José Marchionni}
+\campo{ATP:}{Pedro Santino Bautista Guzmán}
+\campo{ASISTE LOS DÍAS:}{\ Viernes}
+\campo{EN EL TURNO:}{Noche}
+\campo{TRABAJO PRÁCTICO N°:}{\ 1}
+\campo{TÍTULO:}{Amplificadores Realimentados}
+
+% ---- Tabla de integrantes ----
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|>{\centering\arraybackslash}p{9.6cm}|>{\centering\arraybackslash}p{5.3cm}|}
+\hline
+\multicolumn{2}{|>{\columncolor{grismedio}}l|}{\textbf{INTEGRANTES PRESENTES EL DÍA QUE SE REALIZÓ}} \\
+\hline
+\rowcolor{grismedio}\textbf{Nombre:} & \textbf{Legajo:} \\
+\hline
+Facundo Rausch Stola & 209.978-0 \\
+\hline
+Ada Zoe Jucika Fernández Gomory & 171.920-8 \\
+\hline
+Matías González Falbo & 211.761-7 \\
+\hline
+Nicolás Toscani & 158.449-2 \\
+\hline
+\rule{0pt}{0.55cm} & \\
+\hline
+\end{tabular}
+
+\vspace{0.55cm}
+
+% ---- Tabla de fechas y firmas ----
+\renewcommand{\arraystretch}{1.0}
+\small
+\begin{tabular}{|p{4.85cm}|p{4.85cm}|p{4.85cm}|}
+\hline
+\rule{0pt}{1.3cm} & \centering\arraybackslash\textbf{FECHAS} &
+\centering\arraybackslash\parbox[c][1.3cm][c]{4.4cm}{\centering\textbf{FIRMA Y ACLARACIÓN DEL DOCENTE}} \\
+\hline
+\rule{0pt}{0.5cm}\textbf{REALIZADO EL} & & \\
+\hline
+\rule{0pt}{0.5cm}\textbf{CORREGIDO} & & \\
+\hline
+\rule{0pt}{0.5cm}\textbf{APROBADO} & & \\
+\hline
+\end{tabular}
+
+\end{document}
